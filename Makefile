@@ -3,9 +3,11 @@ SDIR = ./src
 
 CC = gcc
 CFLAGS = -I $(IDIR)
-DEPS = hello.h
+DEPS = $(wildcard *.h $(IDIR)/*.h)
+SRC = $(wildcard *.c $(SDIR)/*.c)
 
 
-hello: $(SDIR)/main.c $(SDIR)/hello.c
-	$(CC) -o $@ $(SDIR)/main.c $(SDIR)/hello.c $(CFLAGS)
+
+hello: $(SRC)
+	$(CC) -g -o $@ $(SRC) $(CFLAGS)
 
